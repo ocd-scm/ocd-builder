@@ -8,10 +8,10 @@ spec:
   source:
     type: Git
     git:
-      uri: "git@github.com:UniqKey/infrastructure.git"
-    contextDir: "tag-oc-build"
-    sourceSecret:
-      name: {{ .Values.scmsecretTagger }}
+      uri: "https://github.com/ocd-scm/ocd-tagger.git"
+#    contextDir: "tag-oc-build"
+#    sourceSecret:
+#      name: {{ .Values.scmsecretTagger }}
   strategy:
     type: Source
     sourceStrategy:
