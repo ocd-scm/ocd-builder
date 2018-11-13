@@ -1,0 +1,54 @@
+kind: BuildConfig
+apiVersion: build.openshift.io/v1
+metadata:
+  name: {{ printf "tag-%s" .Values.name }}
+  annotations:
+    description: Tags an image stream with the git tag of the image in the stream
+spec:
+  source:
+    type: Git
+    git:
+      uri: "git@github.com:UniqKey/infrastructure.git"
+    contextDir: "tag-oc-build"
+    sourceSecret:
+      name: {{ .Values.scmsecretTagger }}
+  strategy:
+    type: Source
+    sourceStrategy:
+      incremental : false
+      from:
+        kind: ImageStreamTag
+        namespace: {{ .Release.Namespace | quote }}
+        name: gitops-openshift:latest
+      env:
+      - name: BUILD_NAMESPACE
+        value: {{ .Release.Namespace | quote }}
+      - name: BUILD_IMAGE
+        value: {{ .Values.name | quote }}
+      - name: OPENSHIFT_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            key: OPENSHIFT_PASSWORD
+            name: {{ .Values.ocsecretTagger | quote }}
+      - name: OPENSHIFT_SERVER
+        valueFrom:
+          secretKeyRef:
+            key: OPENSHIFT_SERVER
+            name: {{ .Values.ocsecretTagger | quote }}
+      - name: OPENSHIFT_USER
+        valueFrom:
+          secretKeyRef:
+            key: OPENSHIFT_USER
+            name: {{ .Values.ocsecretTagger | quote }}
+  output:
+    to:
+      kind: ImageStreamTag
+      name: {{ printf "tag-%s:latest" .Values.name }}
+  triggers:
+  - imageChange:
+      from:
+        kind: ImageStreamTag
+        name: {{ print .Values.name ":latest" | quote }}
+    type: ImageChange
+  - type: ConfigChange
+

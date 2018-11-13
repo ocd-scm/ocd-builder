@@ -1,0 +1,6 @@
+kind: ImageStream
+apiVersion: image.openshift.io/v1
+metadata:
+  name: {{ printf "tag-%s" .Values.name }}
+  annotations:
+    description: Not actually used but needed by buildconfig-tag.yaml

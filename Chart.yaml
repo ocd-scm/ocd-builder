@@ -1,0 +1,9 @@
+name: builder
+description: Builder of application images
+home: https://github.com/ocd-scm/ocd-builder
+keywords:
+- builder
+- openshift
+sources:
+- https://github.com/ocd-scm/ocd-builder
+version: "1.0.0"
