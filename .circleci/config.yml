@@ -6,8 +6,35 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Greeting
-          command: echo Hello, world.
+          name: Build Greeting
+          command: echo Hello, build.
+
+  deploy:
+    docker:
+        - image: simonmassey/ocd-tools:dfe80244cba579dbdcc83bb46d1203a78981b85e
+          # environment variables for the application container build to run
+          environment:
+            BUILD_NAMESPACE: uniqkey-api-staging
+            BUILD: backoffice
+
+    steps:
+      - checkout
       - run:
-          name: Print the Current Time
-          command: date
+          name: Deploy Greeting
+          command: echo Hello, deploy
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build:
+          filters:
+            tags:
+              only: /.*/
+      - deploy:
+          requires:
+            - build
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: /.*/
