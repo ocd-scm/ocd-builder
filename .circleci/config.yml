@@ -1,38 +1,19 @@
 version: 2
 jobs:
-  build:
-    docker:
-      - image: debian:stretch
-    steps:
-      - checkout
-      - run:
-          name: Build Greeting
-          command: echo Hello, build.
-
   deploy:
     docker:
         - image: simonmassey/ocd-tools:dfe80244cba579dbdcc83bb46d1203a78981b85e
-          # environment variables for the application container build to run
-          environment:
-            BUILD_NAMESPACE: uniqkey-api-staging
-            BUILD: backoffice
 
     steps:
       - checkout
       - run:
-          name: Deploy Greeting
-          command: echo Hello, deploy
+          name: release chart
+          command: ./github-release.sh
 workflows:
   version: 2
   build-and-deploy:
     jobs:
-      - build:
-          filters:
-            tags:
-              only: /.*/
       - deploy:
-          requires:
-            - build
           filters:
             tags:
               only: /^v.*/
