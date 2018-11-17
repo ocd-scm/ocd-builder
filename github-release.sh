@@ -20,7 +20,7 @@ github.com:
   oauth_token: ${GITHUB_OAUTH_TOKEN}
 EOL
 
-cd builder
+cd ocd-builder
 
 NAME=$(cat Chart.yaml | yq .name | sed 's/"//g' )
 VERSION=$(cat Chart.yaml | yq .version | sed 's/"//g')
@@ -28,4 +28,4 @@ echo NAME=$NAME VERSION=$VERSION
 
 helm package . 
 
-hub release create -a "$NAME-$VERSION.tgz" -m "helm chart $NAME $VERSION" $NAME-$VERSION
+hub release create -a "$NAME-$VERSION.tgz" -m "$NAME helm chart $VERSION" $NAME-$VERSION

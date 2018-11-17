@@ -1,4 +1,4 @@
-name: builder
+name: ocd-builder
 description: Builder of application images
 home: https://github.com/ocd-scm/ocd-builder
 keywords:
@@ -6,4 +6,4 @@ keywords:
 - openshift
 sources:
 - https://github.com/ocd-scm/ocd-builder
-version: "1.0.1"
+version: "1.0.0"
