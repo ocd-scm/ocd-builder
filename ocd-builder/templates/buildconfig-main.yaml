@@ -11,8 +11,10 @@ spec:
       uri: {{ .Values.source_repository_url | quote }}
       ref: {{ .Values.source_repository_ref | quote }}
     contextDir: {{ .Values.context_dir | quote }}
+    {{ if .Values.scmsecret }}
     sourceSecret:
       name: {{ .Values.scmsecret | quote }}
+    {{ end }}
   strategy:
     type: Source
     sourceStrategy:

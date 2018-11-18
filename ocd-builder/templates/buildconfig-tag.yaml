@@ -10,8 +10,10 @@ spec:
     git:
       uri: "https://github.com/ocd-scm/ocd-tagger.git"
 #    contextDir: "tag-oc-build"
-#    sourceSecret:
-#      name: {{ .Values.scmsecretTagger }}
+    {{ if .Values.scmsecretTagger }}
+    sourceSecret:
+      name: {{ .Values.scmsecretTagger }}
+    {{ end }}
   strategy:
     type: Source
     sourceStrategy:
