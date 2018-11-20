@@ -1,0 +1,11 @@
+kind: ImageStream
+apiVersion: image.openshift.io/v1
+metadata:
+    name: ocd-tools
+spec:
+    dockerImageRepository: docker.io/simonmassey/ocd-tools
+    tags:
+      - name: "latest"
+        from:
+            kind: DockerImage
+            name: docker.io/simonmassey/ocd-tools:v1.0.0

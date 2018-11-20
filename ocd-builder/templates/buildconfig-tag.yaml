@@ -21,8 +21,12 @@ spec:
       from:
         kind: ImageStreamTag
         namespace: {{ .Release.Namespace | quote }}
-        name: gitops-openshift:latest
+        name: ocd-tools:latest
       env:
+      {{ if .Values.insecureSkipTlsVerify }}
+      - name: INSECURE_SKIP_TLS_VERIFY
+        value: "--insecure-skip-tls-verify"
+      {{ end }}
       - name: BUILD_NAMESPACE
         value: {{ .Release.Namespace | quote }}
       - name: BUILD_IMAGE
