@@ -4,5 +4,5 @@ ocd-builder is a generic heml chart to build code in git into an container image
 
 ![alt text][ocd-build-components]
 
-[ocd-build-components]: https://raw.githubusercontent.com/ocd-scm/ocd-meta/master/imgs/ocd-build-components.png "OCD Builder Components"
+[ocd-build-components]: https://github.com/ocd-scm/ocd-meta/blob/master/imgs/ocd-builder.png?raw=true "OCD Builder Components"
 
