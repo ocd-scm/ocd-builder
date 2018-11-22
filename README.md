@@ -1,6 +1,6 @@
 # ocd-builder
 
-ocd-builder is a generic heml chart to build code in git into an container image uaing openshift. It can also add a docker tag to the built image that matches the git tag of the built code.
+ocd-builder is a generic heml chart to s2i build your code in git into an container image. It can also add a docker tag to the built image that matches the git tag. This can be triggered by a git release webhook configured to push an event to ocd-builder-webook. 
 
 ![alt text][ocd-build-components]
 
