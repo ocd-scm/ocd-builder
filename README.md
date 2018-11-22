@@ -6,3 +6,6 @@ ocd-builder is a generic heml chart to s2i build your code in git into an contai
 
 [ocd-build-components]: https://github.com/ocd-scm/ocd-meta/blob/master/imgs/ocd-builder.png?raw=true "OCD Builder Components"
 
+## Usage
+
+See `examples/realworld.io/realworld-demo.sh`
