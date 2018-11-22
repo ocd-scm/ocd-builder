@@ -1,5 +1,5 @@
 # name: The name of the built application image
-name: readworld
+name: realworld
 # s2iimage: The local s2i image name to build using. Managed outside of this template.
 s2iimage: nodejs-8-rhel7
 # scmsecret: The ssh key secret to pull the source.

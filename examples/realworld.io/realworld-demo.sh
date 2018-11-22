@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # Add the ocd-meta repo to helm
 helm repo list | grep ocd-meta > /dev/null
 if [ "$?" != "0" ]; then
@@ -13,11 +15,6 @@ helm upgrade --install \
     ocd-builder-credentials \
     ocd-meta/ocd-builder-credentials
 
-# s2i imagees are maintained seperately so that we can security patch them independently of the code we build
-oc import-image nodejs-8-rhel7:1-31 --from='registry.access.redhat.com/rhscl/nodejs-8-rhel7:1-31' --confirm
-PROJECT=$(oc project --short)
-oc tag $PROJECT/nodejs-8-rhel7:1-31 $PROJECT/nodejs-8-rhel7:latest
-
 # install the builder which will build the code with the s2i image
 helm upgrade --install \
      --set insecureSkipTlsVerify=true \
@@ -26,3 +23,7 @@ helm upgrade --install \
      ../../ocd-builder/ocd-builder-1.0.1.tgz
      #ocd-meta/ocd-builder
 
+# s2i imagees are maintained seperately so that we can security patch them independently of the code we build
+oc import-image nodejs-8-rhel7:1-31 --from='registry.access.redhat.com/rhscl/nodejs-8-rhel7:1-31' --confirm
+PROJECT=$(oc project --short)
+oc tag $PROJECT/nodejs-8-rhel7:1-31 $PROJECT/nodejs-8-rhel7:latest
