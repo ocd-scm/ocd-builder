@@ -12,4 +12,8 @@ See `examples/realworld.io/realworld-demo.sh`
 
 ## See Also
 
+The [ocd-meta wiki](https://github.com/ocd-scm/ocd-meta/wiki)
+
+The [s2i](https://github.com/openshift/source-to-image/blob/master/README.md) documentation.
+
 https://github.com/ocd-scm/ocd-builder-webhook
