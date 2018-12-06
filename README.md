@@ -14,6 +14,6 @@ See `examples/realworld.io/realworld-demo.sh`
 
 The [ocd-meta wiki](https://github.com/ocd-scm/ocd-meta/wiki)
 
-The [s2i](https://github.com/openshift/source-to-image/blob/master/README.md) documentation.
+The [s2i](https://github.com/openshift/source-to-image/blob/master/README.md) documentation and how to [customise s2i builds](https://docs.openshift.com/container-platform/3.11/using_images/s2i_images/customizing_s2i_images.html) on OKD
 
 https://github.com/ocd-scm/ocd-builder-webhook
