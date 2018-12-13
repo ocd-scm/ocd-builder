@@ -4,8 +4,8 @@ ocd-builder is a generic heml chart to s2i build your code in git into an contai
 
 ```
 Given a developer wants to create a release of an application 
-When they create a release $TAG of the code that matches a regular expression
-Then an OCD webhook will trigger and run an s2i build
+When they create a git release $TAG of the code that matches a regular expression
+Then an OCD webhook will catch the git webhook event and run an s2i build
 And will apply $TAG to the built container image within the registry
 ```
 
