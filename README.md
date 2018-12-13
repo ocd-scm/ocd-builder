@@ -1,6 +1,17 @@
 # ocd-builder
 
-ocd-builder is a generic heml chart to s2i build your code in git into an container image. It can also add a docker tag to the built image that matches the git tag. This can be triggered by a git release webhook configured to push an event to ocd-builder-webook. 
+ocd-builder is a generic heml chart to s2i build your code in git into an container image. It can also add a docker tag to the built image that matches the git tag. This can be triggered by a git webhook configured to push an event to ocd-builder-webook. Together they implement this story for building:
+
+```
+Given a developer wants to create a release of an application 
+When they create a release $TAG of the code that matches a regular expression
+Then an OCD webhook will trigger and run an s2i build
+And will apply $TAG to the built container image within the registry
+```
+
+Note that there are some subtleties you might not have noted about GitHub webhook events. If you use the GitHub (or Gitea) web interface or the GitHub CLI `hub` to create a release it creates a git tag, zip/gzip file, and fires a release event. That is the default thing that OCD matches as it’s the strongest definition of a release of your application.
+
+Many (if not the majority) of developers won’t be aware of the git release feature. There is a weaker definition of a release which is to push a release tag that matches some pattern (e.g., `/v.*/` or `/.*-RELEASE/`). That will generate a different type of webook event. You might not have noticed that there are three styles of git tags you can use: lightweight, annotated and signed. OCD plans to support all these release defintions. The OCD default has a few advantages so we suggest you create release if those are supported by you git server (e.g., GitHub, Gitea). 
 
 ![alt text][ocd-build-components]
 
