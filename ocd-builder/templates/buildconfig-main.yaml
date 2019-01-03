@@ -41,3 +41,8 @@ spec:
   - type: Generic
     generic:
       secret: {{ .Values.generic_webhook_secret | default (randAlphaNum 40) | quote }}
+  {{ if .Values.memory_limit }}
+  resources:
+    limits:
+      memory: {{ .Values.memory_limit }}
+  {{ end }}
