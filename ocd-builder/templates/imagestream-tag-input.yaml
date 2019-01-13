@@ -1,7 +1,7 @@
 kind: ImageStream
 apiVersion: image.openshift.io/v1
 metadata:
-    name: ocd-tools
+    name: {{ printf "ocd-tools-%s" .Values.name }}
 spec:
     dockerImageRepository: docker.io/simonmassey/ocd-tools
     tags:
