@@ -1,10 +1,11 @@
 kind: BuildConfig
 apiVersion: build.openshift.io/v1
 metadata:
-  name: {{ printf "tag-%s" .Values.name }}
+  name: {{ printf "tag-%s" .Values.name | quote }}
   annotations:
     description: Tags an image stream with the git tag of the image in the stream
 spec:
+  serviceAccountName: {{ printf "sa-tag-%s" .Values.name | quote }}
   source:
     type: Git
     git:
@@ -31,20 +32,10 @@ spec:
         value: {{ .Release.Namespace | quote }}
       - name: BUILD_IMAGE
         value: {{ .Values.name | quote }}
-      - name: OPENSHIFT_PASSWORD
-        valueFrom:
-          secretKeyRef:
-            key: OPENSHIFT_PASSWORD
-            name: {{ .Values.ocsecretTagger | quote }}
       - name: OPENSHIFT_SERVER
         valueFrom:
           secretKeyRef:
             key: OPENSHIFT_SERVER
-            name: {{ .Values.ocsecretTagger | quote }}
-      - name: OPENSHIFT_USER
-        valueFrom:
-          secretKeyRef:
-            key: OPENSHIFT_USER
             name: {{ .Values.ocsecretTagger | quote }}
   output:
     to:
