@@ -33,10 +33,7 @@ spec:
       - name: BUILD_IMAGE
         value: {{ .Values.name | quote }}
       - name: OPENSHIFT_SERVER
-        valueFrom:
-          secretKeyRef:
-            key: OPENSHIFT_SERVER
-            name: {{ .Values.ocsecretTagger | quote }}
+        value: {{ .Values.openshiftServer | quote }}
   output:
     to:
       kind: ImageStreamTag

@@ -6,8 +6,6 @@ s2iimage:
 #scmsecret: 
 # scmsecretTagger: The ssh key secret to pull the tagger source.
 #scmsecretTagger: 
-# ocsecretTagger: The secret with the openshift credentials to tag images.
-ocsecretTagger: ocd-builder-credentials
 # memory_limit: Maximum amount of memory the container can use.
 memory_limit: 
 # source_repository_url: The URL of the repository with your application source code.
