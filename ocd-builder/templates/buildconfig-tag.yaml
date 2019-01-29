@@ -5,7 +5,7 @@ metadata:
   annotations:
     description: Tags an image stream with the git tag of the image in the stream
 spec:
-  serviceAccountName: {{ printf "sa-tag-%s" .Values.name | quote }}
+  serviceAccount: {{ printf "sa-tag-%s" .Values.name | quote }}
   source:
     type: Git
     git:
