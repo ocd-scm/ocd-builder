@@ -1,0 +1,44 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  creationTimestamp: null
+  name: {{ print .Values.name "isreader"  | quote }}
+rules:
+- apiGroups:
+  - image.openshift.io
+  resources:
+  - imagestreams
+  verbs:
+  - get
+  - list
+  - watch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  creationTimestamp: null
+  name: {{ print .Values.name "istreader"  | quote }}
+rules:
+- apiGroups:
+  - image.openshift.io
+  resources:
+  - imagestreamtags
+  verbs:
+  - get
+  - list
+  - watch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  creationTimestamp: null
+  name: {{ print .Values.name "istwriter"  | quote }}
+rules:
+- apiGroups:
+  - image.openshift.io
+  resources:
+  - imagestreamtags
+  verbs:
+  - create
+  - update
+  - patch
