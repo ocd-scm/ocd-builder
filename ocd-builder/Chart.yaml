@@ -6,4 +6,4 @@ keywords:
 - openshift
 sources:
 - https://github.com/ocd-scm/ocd-builder
-version: "1.0.0"
+version: "1.0.0-M1"
