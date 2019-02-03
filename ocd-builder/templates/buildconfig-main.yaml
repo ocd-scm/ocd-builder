@@ -35,12 +35,14 @@ spec:
   triggers:
   - type: ImageChange
   - type: ConfigChange
+  {{ if .Values.webhookSecrets }}
   - type: GitHub
     github:
       secret: {{ .Values.github_webhook_secret | default (randAlphaNum 40) | quote }}
   - type: Generic
     generic:
       secret: {{ .Values.generic_webhook_secret | default (randAlphaNum 40) | quote }}
+  {{ end }}
   {{ if .Values.memory_limit }}
   resources:
     limits:
