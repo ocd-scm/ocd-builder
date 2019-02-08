@@ -13,7 +13,6 @@ Most people are familiar with `push` events that do CI builds. The event that we
 
  1. `git push orgin v1.2.3`
  2. `hub release -m 'my release' v1.2.3`
- 3. Using the website to create a release called `v1.2.3`
 
 What we want to do is make a container image of the code at tag `v1.2.3` and give it the docker tag `v1.2.3`. Then we can use the other features of OCD to move that tagged image to different environments. 
 
