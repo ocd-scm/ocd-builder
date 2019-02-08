@@ -11,10 +11,10 @@ And will apply $TAG to the built container image within the registry
 
 Most people are familiar with `push` events that do CI builds. The event that we want to respond to is a `release` event. This is fired on any of:
 
- 1. `git push orgin v1.2.3`
- 2. `hub release -m 'my release' v1.2.3`
+ 1. `hub release -m 'my release' v1.2.3`
+ 2. Using the web interface to create a release with a tag `v1.2.3`
 
-What we want to do is make a container image of the code at tag `v1.2.3` and give it the docker tag `v1.2.3`. Then we can use the other features of OCD to move that tagged image to different environments. 
+This will fire a release webhook event and create a tag that you can pull from the server. What we want to do is make a container image of the code at tag `v1.2.3` and give it the docker tag `v1.2.3`. Then we can use the other features of OCD to move that tagged image to different environments. 
 
 Many (if not the majority) of developers won’t be aware of the git release feature. There is a weaker definition of a release which is to push a release tag that matches some pattern (e.g., `/v.*/` or `/.*-RELEASE/`). That will generate a different type of webook event. You might not have noticed that there are three styles of git tags you can use: lightweight, annotated and signed. OCD plans to support all these release defintions. The OCD default has a few advantages so we suggest you create release if those are supported by you git server (e.g., GitHub, Gitea). 
 
