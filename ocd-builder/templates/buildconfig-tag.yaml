@@ -26,6 +26,10 @@ spec:
       - name: INSECURE_SKIP_TLS_VERIFY
         value: "--insecure-skip-tls-verify"
       {{ end }}
+      {{ if .Values.chatbotNotify }}
+      - name: CHATBOT_NOTIFY
+        value: {{ .Values.chatbotNotify | quote }}
+      {{ end }}
       - name: BUILD_NAMESPACE
         value: {{ .Release.Namespace | quote }}
       - name: BUILD_IMAGE
