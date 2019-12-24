@@ -1,5 +1,7 @@
 # ocd-builder
 
+This repo is deprecated. Please use [ocd-release-build](https://github.com/ocd-scm/ocd-release-build) instead.  
+
 ocd-builder is a generic heml chart to s2i build your code in git into an container image. It can also add a docker tag to the built image that matches the git tag. This can be triggered by a git webhook configured to push an event to ocd-builder-webook. Together they implement this story for building:
 
 ```
