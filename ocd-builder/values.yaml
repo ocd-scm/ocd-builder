@@ -6,6 +6,8 @@ s2iimage:
 #scmsecret: 
 # scmsecretTagger: The ssh key secret to pull the tagger source.
 #scmsecretTagger: 
+# pullSecret: The image pull secret which is the name of a secret containing a kubernetes.io/dockerconfigjson
+#pullSecret: 
 # memory_limit: Maximum amount of memory the container can use.
 memory_limit: 
 # source_repository_url: The URL of the repository with your application source code.
