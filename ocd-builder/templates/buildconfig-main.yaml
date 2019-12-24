@@ -23,6 +23,10 @@ spec:
         kind: ImageStreamTag
         namespace: {{ .Release.Namespace | quote }}
         name: {{ print .Values.s2iimage ":latest" | quote }}
+      {{- if .Values.pullSecret }}
+      pullSecret:
+        name: {{ .Values.pullSecret | quote }}
+      {{- end }}  
       {{- if .Values.build_env }}
       env:
         {{- range .Values.build_env }}
